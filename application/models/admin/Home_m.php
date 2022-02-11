@@ -66,7 +66,7 @@ class Home_m extends CI_Model
     public function getReportExcel($condition = "", $where_in_assign_to_in = "")
     {
         $this->db
-            ->select("i.*")
+            ->select("i.number,i.seal_name,i.doi,i.`type`,i.`use`,i.`client`")
             ->where([
                 'i.isactive' => 1,
             ]);
