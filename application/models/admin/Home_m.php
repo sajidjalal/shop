@@ -88,4 +88,24 @@ class Home_m extends CI_Model
             'filename' => "report_"
         ]);
     }
+
+    public function itemDetails($custID = "")
+    {
+
+        $query = $this->db
+            ->select("a.*,us.profile_pic,us.first_name")
+            ->join("users as us", "a.created_by = us.user_id", "left")
+            ->where([
+                // "us.isactive" => 1
+            ]);
+
+        if ($custID)
+            $this->db->where([
+                "us.user_id" => $custID
+            ]);
+        $result = $query->get("items as a")
+            ->result();
+
+        return $result;
+    }
 }

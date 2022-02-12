@@ -283,4 +283,45 @@ class Home extends CI_Controller
             return true;
         }
     }
+
+    public function itemDetails($custID = "")
+    {
+        extract($this->input->get(null, true));
+
+        $condition = "";
+        if (@$user_id) {
+            $condition = ['us.user_id' => $user_id];
+        } else {
+            $condition = ['us.user_id' => $this->user_id];
+        }
+
+
+        $data['userInfo'] = $this->obj_home->getUsersInfo($condition);
+
+        if (is_numeric($custID)) {
+            $data['itemDetails'] = $this->obj_home->itemDetails($custID);
+        } else {
+            $this->load->view('comman/unauthorize_view', $data);
+            return;
+        }
+
+
+        if ($data['userInfo']) {
+
+            if ($this->role_id == 1) {
+                $this->load->view('layout/superAdmin/header', $data);
+                $this->load->view('admin/itemDetails', $data);
+                $this->load->view('layout/admin/footer');
+                return;
+            } else if ($this->role_id == 2) {
+                $this->load->view('layout/admin/header', $data);
+                $this->load->view('admin/itemDetails', $data);
+                $this->load->view('layout/admin/footer');
+                return;
+            } else if ($this->role_id  == 4) {
+            }
+        } else {
+            $this->load->view('comman/unauthorize_view', $data);
+        }
+    }
 }

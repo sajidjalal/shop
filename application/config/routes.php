@@ -59,3 +59,4 @@ $route['checkLogin'] = 'Auth/checkLogin';
 $route['admin/profile'] = 'admin/Home/profile';
 $route['admin/item-list'] = 'admin/Home/itemList';
 $route['admin/report_exports'] = 'admin/Home/excel_export';
+$route['admin/item-details/(:any)'] = 'admin/Home/itemDetails/$1';

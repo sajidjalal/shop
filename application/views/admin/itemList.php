@@ -91,7 +91,7 @@
                                                         <td><?= $key + 1; ?> </td>
                                                         <td>
                                                             <h5 class="text-truncate font-size-14">
-                                                                <a href="/admin/cust-details/<?= $value->id; ?>" class="text-dark">
+                                                                <a href="/admin/item-details/<?= $value->id; ?>" class="text-dark">
                                                                     <?= $value->number; ?>
                                                                 </a>
                                                             </h5>
@@ -101,7 +101,7 @@
                                                             <?= ($value->seal_name) ?>
                                                         </td>
                                                         <td>
-                                                            <?= date('d-m-Y ', strtotime($value->doi)) ?>
+                                                            <?= date('d-m-Y', strtotime($value->doi)) ?>
 
                                                         </td>
 
